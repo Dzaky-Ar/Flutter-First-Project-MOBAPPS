@@ -53,11 +53,13 @@ class MyScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () async {
 
-                final Uri url = Uri.parse('https://www.instagram.com/ichzfer/');
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
+                final Uri web = Uri.parse('https://www.instagram.com/ichzfer/');
+                final Uri app = Uri.parse('instagram://user?username=ichzfer');
+
+                    if (await canLaunchUrl(app)) {
+                      await launchUrl(app);
                     } else {
-                      throw 'Could not launch $url';
+                      await launchUrl(web);
                     }
 
                   },
